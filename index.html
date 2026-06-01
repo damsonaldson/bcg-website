@@ -6,60 +6,44 @@
     <meta name="description" content="Brightwood Consulting Group: Expert Health IT integration, FHIR architecture, and interoperability solutions for healthcare.">
     <title>Brightwood Consulting Group</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg-dark: #090d16;
+            --card-bg: rgba(22, 30, 49, 0.4);
+            --card-border: rgba(255, 255, 255, 0.05);
+            --card-border-hover: rgba(99, 102, 241, 0.3);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --primary: #6366f1;
+            --primary-hover: #818cf8;
+            --accent: #a5b4fc;
+            --nav-bg: rgba(9, 13, 22, 0.7);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'JetBrains Mono', 'Fira Code', 'Source Code Pro', 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
-            color: #e0e0e0;
-            background: #1a1a1a;
-        }
-
-        /* Navigation */
-        nav {
-            background: #2a2a2a;
-            color: #ffffff;
-            padding: 1rem 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid #404040;
-        }
-
-        nav .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        nav h1 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-        }
-
-        nav a {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: #cccccc;
+            color: var(--text-main);
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(79, 70, 229, 0.06) 0%, transparent 45%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
 
         /* Container */
@@ -69,200 +53,339 @@
             padding: 0 2rem;
         }
 
-        /* Hero Section */
-        .hero {
-            background: #1a1a1a;
-            color: #ffffff;
-            padding: 4rem 2rem;
-            text-align: center;
-            min-height: 100px;
+        /* Navigation */
+        nav {
+            background: var(--nav-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.3s ease;
+        }
+
+        nav .container {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 0;
+        }
+
+        nav h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #ffffff 0%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
             align-items: center;
         }
 
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.25rem 0;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--text-main);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 9rem 2rem 7rem;
+            text-align: center;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
         .hero h1 {
-            font-size: clamp(1.5rem, 5vw, 2.2rem);
-            margin-bottom: 1rem;
-            font-weight: 700;
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1.5px;
+            background: linear-gradient(135deg, #ffffff 40%, #c7d2fe 80%, #818cf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero .subtitle {
-            font-size: 1rem;
-            opacity: 0.9;
-            margin-bottom: 2rem;
-            font-weight: 300;
-            color: #cccccc;
+            font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            font-weight: 400;
+            line-height: 1.6;
         }
 
         .cta-button {
-            display: inline-block;
-            background: #4a4a4a;
+            display: inline-flex;
+            align-items: center;
+            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
             color: #ffffff;
-            padding: 0.5rem 1.2rem;
-            border-radius: 4px;
+            padding: 0.9rem 2rem;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.85rem;
-            transition: background-color 0.3s;
-            border: 1px solid #666666;
+            font-size: 0.95rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.25);
+            cursor: pointer;
         }
 
         .cta-button:hover {
-            background: #5a5a5a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.35);
+            background: linear-gradient(135deg, #818cf8 0%, #6366f1 100%);
         }
 
         /* About Section */
         .about {
-            padding: 2.5rem 2rem;
-            background: #222222;
+            padding: 6rem 2rem;
+            background: rgba(15, 23, 42, 0.4);
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
         }
 
         .about .container {
-            max-width: 900px;
-        }
-
-        .about h2 {
-            font-size: 1.6rem;
-            margin-bottom: 1.5rem;
-            color: #ffffff;
+            max-width: 850px;
+            text-align: center;
         }
 
         .about p {
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
-            color: #cccccc;
-            line-height: 1.8;
+            font-size: 1.15rem;
+            line-height: 1.85;
+            color: #cbd5e1;
+            font-weight: 400;
+        }
+
+        .about .tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-top: 2rem;
+        }
+
+        .tag {
+            background: rgba(99, 102, 241, 0.08);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
         }
 
         /* Services Section */
         .services {
-            padding: 2.5rem 2rem;
-            background: #1a1a1a;
+            padding: 7rem 2rem;
         }
 
         .services h2 {
-            font-size: 1.6rem;
-            margin-bottom: 2.5rem;
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 4rem;
             text-align: center;
             color: #ffffff;
+            letter-spacing: -0.5px;
+        }
+
+        .services h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            margin: 0.75rem auto 0;
+            border-radius: 2px;
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .service-card {
-            background: #2a2a2a;
-            padding: 1.2rem;
-            border-radius: 8px;
-            border: 1px solid #404040;
-            transition: border-color 0.3s;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(800px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(99, 102, 241, 0.08), transparent 40%);
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
         }
 
         .service-card:hover {
-            border-color: #666666;
+            border-color: var(--card-border-hover);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.5);
+            background: rgba(22, 30, 49, 0.6);
+        }
+
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 12px;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            z-index: 2;
+        }
+
+        .service-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
         }
 
         .service-card h3 {
+            font-family: 'Outfit', sans-serif;
             color: #ffffff;
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: -0.2px;
+            z-index: 2;
         }
 
         .service-card p {
-            color: #cccccc;
+            color: var(--text-muted);
             line-height: 1.7;
-            font-size: 0.85rem;
+            font-size: 0.95rem;
+            z-index: 2;
         }
 
         /* Contact Section */
         .contact {
-            padding: 2.5rem 2rem;
-            background: #222222;
-            text-align: center;
+            padding: 7rem 2rem;
+            background: rgba(15, 23, 42, 0.4);
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
         }
 
         .contact h2 {
-            font-size: 1.6rem;
-            margin-bottom: 1.5rem;
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
             color: #ffffff;
+            text-align: center;
+            letter-spacing: -0.5px;
         }
 
         .contact p {
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
-            color: #cccccc;
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 3rem;
         }
 
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            flex-wrap: wrap;
-            margin-top: 2rem;
-        }
-
-        .contact-item {
-            flex: 1;
-            min-width: 200px;
-        }
-
-        .contact-item h3 {
-            color: #ffffff;
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-item a {
-            color: #cccccc;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        .contact-item a:hover {
-            color: #ffffff;
-        }
-
-        /* Contact Form */
         .contact-form {
             max-width: 600px;
-            margin: 2rem auto 0;
-            text-align: left;
+            margin: 0 auto;
+            background: rgba(22, 30, 49, 0.4);
+            border: 1px solid var(--card-border);
+            padding: 3rem;
+            border-radius: 20px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.75rem;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 0.5rem;
-            color: #ffffff;
+            margin-bottom: 0.6rem;
+            color: var(--text-main);
             font-size: 0.9rem;
+            font-weight: 500;
         }
 
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 0.8rem;
-            background: #2a2a2a;
-            border: 1px solid #404040;
-            border-radius: 4px;
+            padding: 0.9rem 1.1rem;
+            background: rgba(9, 13, 22, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
             color: #ffffff;
             font-family: inherit;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
         }
 
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: #666666;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+            background: rgba(9, 13, 22, 0.7);
         }
 
         .form-group textarea {
@@ -270,17 +393,24 @@
             resize: vertical;
         }
 
+        .contact-form .cta-button {
+            width: 100%;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+
         /* Footer */
         footer {
-            background: #2a2a2a;
-            color: #cccccc;
+            background: var(--bg-dark);
+            color: var(--text-muted);
             text-align: center;
-            padding: 2rem;
-            border-top: 1px solid #404040;
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.9rem;
         }
 
         footer p {
-            opacity: 0.9;
+            opacity: 0.8;
         }
 
         /* Mobile Menu Toggle */
@@ -321,6 +451,10 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            nav .container {
+                padding: 1rem 0;
+            }
+
             .nav-toggle {
                 display: block;
             }
@@ -331,12 +465,13 @@
                 top: 100%;
                 left: 0;
                 width: 100%;
-                background: #2a2a2a;
+                background: var(--bg-dark);
                 flex-direction: column;
                 align-items: center;
-                padding: 1rem 0;
-                border-bottom: 1px solid #404040;
-                gap: 1.5rem;
+                padding: 2rem 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+                gap: 2rem;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.5);
             }
 
             nav ul.active {
@@ -344,78 +479,21 @@
             }
 
             nav a {
-                font-size: 1rem;
+                font-size: 1.05rem;
                 display: block;
                 padding: 0.5rem 2rem;
             }
 
-            nav h1 {
-                font-size: 1.1rem;
-            }
-
             .hero {
-                padding: 2rem 1.5rem;
-                min-height: 400px;
+                padding: 7rem 1.5rem 5rem;
             }
 
-            .hero h1 {
-                font-size: 1.4rem;
+            .about, .services, .contact {
+                padding: 5rem 1.5rem;
             }
 
-            .hero .subtitle {
-                font-size: 0.9rem;
-            }
-
-            .about h2,
-            .services h2,
-            .contact h2 {
-                font-size: 1.3rem;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-info {
-                gap: 1.5rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            nav {
-                padding: 0.75rem 1rem;
-            }
-
-            .hero {
-                padding: 1.5rem 1rem;
-                min-height: 300px;
-            }
-
-            .hero h1 {
-                font-size: 1.2rem;
-            }
-
-            .hero .subtitle {
-                font-size: 0.8rem;
-            }
-
-            .container {
-                padding: 0 1rem;
-            }
-
-            .about h2,
-            .services h2,
-            .contact h2 {
-                font-size: 1.1rem;
-            }
-
-            .about p {
-                font-size: 0.85rem;
-            }
-
-            .cta-button {
-                padding: 0.4rem 1rem;
-                font-size: 0.8rem;
+            .contact-form {
+                padding: 2rem;
             }
         }
     </style>
@@ -438,7 +516,9 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <h1>Brightwood Consulting Group.</h1>
+        <h1>Brightwood Consulting Group</h1>
+        <p class="subtitle">Expert Health IT integration, FHIR architecture, and interoperability solutions for healthcare systems.</p>
+        <a href="#contact" class="cta-button">Discuss Your Project</a>
     </section>
 
     <!-- About Section -->
@@ -447,6 +527,13 @@
             <p>
                 Brightwood Consulting Group is a professional services firm specializing in modern digital healthcare integration and transformation. Tags: design, architecture, interoperability, APIs, HL7 (v2/v3), FHIR and getting-things-done.
             </p>
+            <div class="tags">
+                <span class="tag">Solution Architecture</span>
+                <span class="tag">Interoperability</span>
+                <span class="tag">FHIR & APIs</span>
+                <span class="tag">HL7 Integration</span>
+                <span class="tag">Systems Delivery</span>
+            </div>
         </div>
     </section>
 
@@ -455,22 +542,46 @@
         <h2>Expertise</h2>
         <div class="services-grid">
             <div class="service-card">
-                <h3>Solution Architecture</h3>
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
                 </div>
+                <h3>Solution Architecture</h3>
+                <p>Designing high-performance, secure, and cloud-ready digital health systems built for long-term scalability.</p>
+            </div>
             <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                </div>
                 <h3>Health IT Integration</h3>
+                <p>Connecting complex clinical workflows and bridging systems like EHRs/EMRs, PACS, RIS, and LIS.</p>
             </div>
             <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                </div>
                 <h3>Interoperability & Standards</h3>
+                <p>Expert implementation of FHIR (R4/R5), HL7 v2/v3, and secure healthcare REST API protocols.</p>
             </div>
             <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                </div>
                 <h3>Systems Integration</h3>
+                <p>Building robust data pipelines, message queues, and broker systems to securely synchronize databases.</p>
             </div>
             <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 22V12M12 12l-4 4M12 12l4 4M20.38 8.12A9 9 0 0 0 12 3a9 9 0 0 0-8.38 5.12"/></svg>
+                </div>
                 <h3>Implementation & Deployment</h3>
+                <p>Scaling clinical applications using modern containerization (Docker) and major secure cloud infrastructures.</p>
             </div>
             <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                </div>
                 <h3>Advisory & Consulting</h3>
+                <p>Strategic technology roadmapping, vendor assessments, and regulatory compliance advice (HIPAA/PHIPA).</p>
             </div>
         </div>
     </section>
@@ -479,6 +590,7 @@
     <section class="contact" id="contact">
         <div class="container">
             <h2>Contact Us</h2>
+            <p>Let's discuss how we can help integrate and secure your clinical technology.</p>
             <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
                 <!-- Replace with your Access Key from Web3Forms -->
                 <input type="hidden" name="access_key" value="8e6d5b6f-9928-4424-98f0-31c60c21c258">
@@ -521,6 +633,18 @@
                 link.addEventListener('click', () => {
                     navMenu.classList.remove('active');
                     navToggle.classList.remove('active');
+                });
+            });
+
+            // Interactive radial mouse glow effect for service cards
+            const cards = document.querySelectorAll('.service-card');
+            cards.forEach(card => {
+                card.addEventListener('mousemove', e => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    card.style.setProperty('--mouse-x', `${x}px`);
+                    card.style.setProperty('--mouse-y', `${y}px`);
                 });
             });
         });
